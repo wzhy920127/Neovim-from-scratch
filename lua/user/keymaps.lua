@@ -18,7 +18,11 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+
 -- Normal --
+-- BufferLine
+keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -31,9 +35,11 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- Beginning or End line
+keymap("n", "<S-l>", "$", opts)
+keymap("n", "<S-h>", "^", opts)
+keymap("x", "<S-l>", "$", opts)
+keymap("x", "<S-h>", "^", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)

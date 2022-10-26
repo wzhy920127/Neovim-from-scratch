@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"clone",
 		"--depth",
 		"1",
-		"https://github.com/wbthomason/packer.nvim",
+		"git@github.com/wbthomason/packer.nvim",
 		install_path,
 	})
 	print("Installing packer close and reopen Neovim...")
@@ -36,6 +36,8 @@ packer.init({
 			return require("packer.util").float({ border = "rounded" })
 		end,
 	},
+  git = {
+  default_url_format = "git@github.com:%s"},
 })
 
 -- Install your plugins here
@@ -77,6 +79,7 @@ return packer.startup(function(use)
 	use { "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" } -- enable LSP
   use { "williamboman/mason.nvim", commit = "c2002d7a6b5a72ba02388548cfaf420b864fbc12"} -- simple to use language server installer
   use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
+  use {"jayp0521/mason-null-ls.nvim"}
 	use { "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" } -- for formatters and linters
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
 
@@ -91,6 +94,12 @@ return packer.startup(function(use)
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
+
+  -- Obsidian
+  use {"epwalsh/obsidian.nvim"}
+
+  -- auto switch imput method
+  use { "brglng/vim-im-select",}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

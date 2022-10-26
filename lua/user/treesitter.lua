@@ -1,4 +1,6 @@
+-- require 'nvim-treesitter.install'.compilers = { "gcc" }
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+
 if not status_ok then
 	return
 end
@@ -13,5 +15,10 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "python", "css" } },
+	indent = { enable = true, disable = { "css" } },
+  --additional_vim_regex_highlighting = {"markdown"},
 })
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
